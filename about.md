@@ -3,7 +3,7 @@ layout: page
 title: About
 ---
 
-Yale Data Science: An Undergraduate Organization serves as a meeting space for undergraduates interested in solving problems involving data. 
+We are a group of Yale undergraduates interested in data science and machine learning.
 
 Things we do:
 
@@ -12,6 +12,6 @@ Things we do:
 * Collaborative data projects
 * Directed readings
 * Conferences 
-* Data competitions
+* [Data competitions](https://www.kaggle.com)
 
 Have questions or suggestions? Feel free to [email us.](yaledatascience@gmail.com)
