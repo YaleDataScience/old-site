@@ -12,8 +12,8 @@ description:      'An Undergraduate Organization'
 url:              http://yaledatascience.github.io/
 
 author:
-  name:           'Mark Otto'
-  url:            https://twitter.com/mdo
+  name:           'Yale Data Science'
+  url:            https://github.com/YaleDataScience
 
 paginate:         5
 
@@ -21,4 +21,4 @@ paginate:         5
 version:          4.0.0
 
 github:
-  repo:           https://github.com/YaleDataScience
+  repo:           https://github.com/YaleDataScience/

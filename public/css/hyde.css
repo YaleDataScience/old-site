@@ -231,6 +231,15 @@ a.sidebar-nav-item:focus {
   color: #6a9fb5;
 }
 
+/* Yale Blue */
+.theme-base-yb .sidebar {
+  background-color: #0F4D92;
+}
+.theme-base-0d .content a,
+.theme-base-0d .related-posts li a:hover {
+  color: #0F4D92;
+}
+
 /* Magenta */
 .theme-base-0e .sidebar {
   background-color: #aa759f;
