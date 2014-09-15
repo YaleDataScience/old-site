@@ -14,4 +14,4 @@ Things we do:
 * Conferences 
 * [Data competitions](https://www.kaggle.com)
 
-Have questions or suggestions? Feel free to [email us.](yaledatascience@gmail.com)
+Have questions or suggestions? Feel free to [email us.](mailto:yaledatascience@gmail.com)
