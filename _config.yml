@@ -18,5 +18,7 @@ author:
 paginate:         5
 
 # Custom vars
-  github:           https://github.com/YaleDataScience/
-  repo:           https://github.com/YaleDataScience/
+version:          4.0.0
+
+github:
+  repo:           https://github.com/poole/hyde
