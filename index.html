@@ -9,7 +9,7 @@ title: Home
     We are a group of Yale undergraduates interested in data science and machine learning.<br>
     We meet weekly to work on projects and data competitions.<br><br>
 
-    Meeting Time: TBD
+    Meeting Time: TBD<br><br>
 
     Contact <script language="JavaScript">
         var username = "yaledatascience";
@@ -24,7 +24,7 @@ title: Home
 
   <h1>News</h1>
   <ul class="posts">
-    {% for post in paginator.posts %}
+    {% for post in site.posts %}
       <li><span class = dates>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
   </ul>
