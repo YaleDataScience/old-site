@@ -8,6 +8,9 @@ title: Home
   <ul class="about">
     We are a group of Yale undergraduates interested in data science and machine learning.<br>
     We meet weekly to work on projects and data competitions.<br><br>
+
+    Meeting Time: TBD
+
     Contact <script language="JavaScript">
         var username = "yaledatascience";
         var hostname = "gmail.com";
@@ -17,14 +20,20 @@ title: Home
     <br><br>
   </ul>
 
+
+
   <h1>News</h1>
-  <ul>
+  <ul class="posts">
+    {% for post in paginator.post %}
+      <li><span class = dates>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
   </ul>
 
   <h1>Events</h1>
-  <ul>
-    <li>
+  <ul class="posts">
+    <li><span class = dates>September 26 2014</span> &raquo; 
     <a href="http://elischolar.library.yale.edu/dayofdata/2014/" target="_blank">Yale Day of Data 2014</a>
     </li>
   </ul>
+
 </div>
