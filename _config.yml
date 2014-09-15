@@ -8,7 +8,7 @@ permalink:        pretty
 # Setup
 title:            Yale Data Science
 tagline:          'An Undergraduate Organization'
-description:      'A brazen two-column <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
+description:      'An Undergraduate Organization'
 url:              http://yaledatascience.github.io/
 
 author:
@@ -18,7 +18,5 @@ author:
 paginate:         5
 
 # Custom vars
-version:          2.0.0
-
-github:
-  repo:           https://github.com/YaleDataScience/yaledatascience.github.io
+  github:           https://github.com/YaleDataScience/
+  repo:           https://github.com/YaleDataScience/
