@@ -7,9 +7,4 @@ Beginning with this week's meeting (October 17), we'll be introducing a new sess
 
 We should be publishing a schedule of topics soon after we gather some more DATA (!!!), so look out for that. We'll also be announcing some speakers and special events soon, so stay tuned and get excited.
 
-As always, if you have questions or feedback, shoot us an email at <b><script language="JavaScript">
-        var username = "yaledatascience";
-        var hostname = "gmail.com";
-        var linktext = username + "@" + hostname ;
-        document.write("<a href='" + "mail" + "to:" + username + "@" + hostname + "'>" + linktext + "</a>");
-        </script></b>.
+As always, if you have questions or feedback, shoot us an email at <yaledatascience@gmail.com>
