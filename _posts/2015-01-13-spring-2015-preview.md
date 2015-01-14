@@ -68,7 +68,7 @@ Earlier, we mentioned that we somehow preprocessed the data for modeling. Here's
 
 All of these cases are taken care of. Words are separated from one another by whitespace and punctuation, which is then discarded. We also discard words found on a list of common, unmeaningful English words. Words are then lowercased and weakly stemmed (meaning trailing *-ing*'s, *-s*'s, and *-e*'s are removed). The LDA authors themselves suggest only weakly stemming words, rather than using aggresive stemmers like the Porter algorithm.
 
-One last step of preprocessing: we're only going to consider courses whose demand is above 25. Check out the following [Gaussian kernel density estimate](http://docs.ggplot2.org/current/geom_histogram.html) of the distribution of course demand. Yale offers a lot of small courses which aren't geared towards large crowds. We aren't interested in these.
+One last step of preprocessing: we're only going to consider courses whose demand is above 50. Check out the following [Gaussian kernel density estimate](http://docs.ggplot2.org/current/geom_histogram.html) of the distribution of course demand. Yale offers a lot of small courses which aren't geared towards large crowds. We aren't interested in these.
 
 <img src="/public/post_images/demandkde.png" alt="Demand KDE" style="width: 640px;"/>
 
@@ -89,6 +89,8 @@ Ah! That's confusing. Not really. Each color represents a different number of to
 We then train a final model using those values, and here's what we found.
 
 ### Results
+Back to the original question: what can you write in a review to get people to sign up for a course on OCS. More specifically, **_what kind of language or topics separate a course attracting a decent crowd from one that attracts 400 people_**?
+
 We present our results by analyzing each topic and assessing their effect on a course's OCS demand. The latter is straightforward: in the linear model, every topic has a coefficient which represents its effect on the response. Say topic X has a large coefficient. Then a course whose reviews are highly weight on topic X will be expected to have a large demand. Since sLDA is non-deterministic, these coefficients vary from trial to trial. However, we have found that in a 12 topic model, typically four topics strongly affect enrollment negatively and four topics strongly affect enrollment positively.
 
 If you read up on LDA, you'll recall that a topic is represented by a probability distribution over every term found in the collection of documents. A topic can be represented simply by the highest weighted terms in the distribution. [Word clouds](http://en.wikipedia.org/wiki/Tag_cloud) essentially capture the same information, but in a much more visually appealing way. The R package *[wordcloud](http://cran.r-project.org/web/packages/wordcloud/wordcloud.pdf)* is a simple way to generate world clouds directly from the results of LDA or sLDA. Due to the appearance of names of professors and courses in most of the word clouds, we will only include one example below. However, **enroll.R** generates all of them for your final model.
@@ -120,7 +122,7 @@ enjoyed lecture | required a lot
 definitely consider | reading long
 would highly recommend | sense of accomplishment
 
-Similar terms show up on both sides, which is likely due to the fact that they occured very frequently throughout the entire corpus of reviews. So take that with a "*grain of salt*".
+Similar terms show up on both sides, which is likely due to the fact that they occured very frequently throughout the entire corpus of reviews. So take that with a "*grain of salt*". Also note that words like "*terrible*" aren't showing up. Recall that we only took courses with over 50 people signed up, implying that they're already popular.
 
 Ok so let's draw some conclusions. We'd expect to see many of these terms. Intuition tells us that people like courses which are high quality ("*amazing class*", "*enjoyed lecture*") and not-too-hard ("*manageable workload*", "*low stress*", "*chill*"). Similarly, people don't like low quality ("*lecture disorganized*") or overly difficult ("*required a lot*", "*reading long*").
 
