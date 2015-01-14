@@ -126,7 +126,7 @@ Similar terms show up on both sides, which is likely due to the fact that they o
 
 Ok so let's draw some conclusions. We'd expect to see many of these terms. Intuition tells us that people like courses which are high quality ("*amazing class*", "*enjoyed lecture*") and not-too-hard ("*manageable workload*", "*low stress*", "*chill*"). Similarly, people don't like low quality ("*lecture disorganized*") or overly difficult ("*required a lot*", "*reading long*").
 
-There are also some surprises. It seems like even if people are adament about how rewarding a class is ("*clear and helpful*", "*really interesting subject*", "*use in future*", "*sense of accomplishment*"), people won't take it. On the other hand, people seem to take some courses even if the reviewers are hesitant about it ("*hard to know*", "*interesting though*", "*grain of salt*").
+There are also some surprises. It seems like even if people are adamant about how rewarding a class is ("*clear and helpful*", "*really interesting subject*", "*use in future*", "*sense of accomplishment*"), people won't take it. On the other hand, people seem to take some courses even if the reviewers are hesitant about it ("*hard to know*", "*interesting though*", "*grain of salt*").
 
 Want to draw some more conclusions? Try running our **[code](https://github.com/YaleDataScience/enroll)** for yourself!
 
