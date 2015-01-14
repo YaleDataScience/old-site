@@ -12,7 +12,7 @@ As always, **[email us](mailto:yaledatascience@gmail.com)** if you have question
 ### Introduction
 Ever taken a course that you REALLY REALLY want other people to take? Ever been a professor who hasn't been happy with your course's enrollment and can pay a bunch of students to write reviews? Well listen up.
 
-There has been a lot of [effort](http://haufler.org/2014/01/19/i-hope-i-dont-get-kicked-out-of-yale-for-this/) put into using numerical ratings to improve our understanding of Yale's courses. However, the review comments - which provide the richest information - have flown under the radar. For a course with high ratings, it's probably obvious that words like "good" and "recommend" will come up frequently. Similarly, for a course with a high workload, we'd expect to see terns like "hard" and "no sleep".
+There has been a lot of [effort](http://haufler.org/2014/01/19/i-hope-i-dont-get-kicked-out-of-yale-for-this/) put into using numerical ratings to improve our understanding of Yale's courses. However, the review comments - which provide the richest information - have flown under the radar. For a course with high ratings, it's probably obvious that words like "good" and "recommend" will come up frequently. Similarly, for a course with a high workload, we'd expect to see terms like "hard" and "no sleep".
 
 But what do highly shopped courses look like? This is the most interesting question, since the actual action someone will take after looking at reviews is to add it to their OCS worksheet (or not). By the end of this post, you'll know what stuff to write to get people to sign up on OCS.
 
@@ -119,6 +119,8 @@ aquired | use in the future
 enjoyed lecture | required a lot
 definitely consider | reading long
 would highly recommend | sense of accomplishment
+
+
 
 ### What's Next?
 The results section here just scraped the surface of what you can find from this model. For example, try adjusting the Dirichlet priors or adding topics. A model with 25 topics and smoothing priors around 0.1 or 0.01 will give topics related to individual courses.
