@@ -78,7 +78,7 @@ LDA and sLDA are bag-of-word models, meaning we only care about a word's members
 
 The *lexicalize* function only supports unigram dictionaries and document-term matrices, so we modified it in **[nlexicalize.R](https://github.com/YaleDataScience/enroll/blob/master/nlexicalize.R)**. It requires RWeka and rjava, which are sometimes difficult to deal with; if those won't work for you, then just use the standard unigram implementation.
 
-Picking the right parameters for your topic model can seem like more art than science, particularly choosing the number of topics. In fact, that may be the case for any model with an informative prior. With LDA, we only have some approximate measures to do model comparison (e.g. perplexity). However, the supervised version has an obvious objective metric: response prediction performance. To identify the "best" model, we'll use a grid search. For every parameter set in the grid, we hold out a test set, learn an sLDA model on the training set, predict the response on the test set, and compute the RMSE. Using cross-validation or a tighter grid would give better results, but they'd also take wayyyyy too long. We're impatient.
+Picking the right parameters for your topic model can seem like more art than science, particularly choosing the number of topics. In fact, that may be the case for any model with an informative prior. With LDA, we only have some approximate measures to do model comparison (e.g. perplexity). However, the supervised version has an obvious objective metric: response prediction performance. First, we partition a training set and a test set. To identify the "best" model, we'll use a grid search. For every parameter set in the grid, we learn an sLDA model on the training set, predict the response on the test set, and compute the RMSE. Using cross-validation or a tighter grid would give better results, but they'd also take wayyyyy too long. We're impatient.
 
 We can visualize the model's performance under different parameter sets by inspecting the plot produced by the script. Here's an example:
 
@@ -120,7 +120,13 @@ enjoyed lecture | required a lot
 definitely consider | reading long
 would highly recommend | sense of accomplishment
 
+Similar terms show up on both sides, which is likely due to the fact that they occured very frequently throughout the entire corpus of reviews. So take that with a "*grain of salt*".
 
+Ok so let's draw some conclusions. We'd expect to see many of these terms. Intuition tells us that people like courses which are high quality ("*amazing class*", "*enjoyed lecture*") and not-too-hard ("*manageable workload*", "*low stress*", "*chill*"). Similarly, people don't like low quality ("*lecture disorganized*") or overly difficult ("*required a lot*", "*reading long*").
+
+There are also some surprises. It seems like even if people are adament about how rewarding a class is ("*clear and helpful*", "*really interesting subject*", "*use in future*", "*sense of accomplishment*"), people won't take it. On the other hand, people seem to take some courses even if the reviewers are hesitant about it ("*hard to know*", "*interesting though*", "*grain of salt*").
+
+Want to draw some more conclusions? Try running our **[code](https://github.com/YaleDataScience/enroll)** for yourself!
 
 ### What's Next?
 The results section here just scraped the surface of what you can find from this model. For example, try adjusting the Dirichlet priors or adding topics. A model with 25 topics and smoothing priors around 0.1 or 0.01 will give topics related to individual courses.
