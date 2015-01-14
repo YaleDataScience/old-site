@@ -5,7 +5,7 @@ title: Spring 2015 Preview
 
 Hey there, data lovers! Good news: Yale Data Science is back in a big way. We've revamped our approach for this semester and can't wait to get going. Here's a preview of one of our new focuses: data science vignettes. This post will take you from a question to a cool result, with some data scraping, modeling, and visualization along the way. Added bonus: you can gain insight like this quickly! This took only a couple hours of development. Data science!
 
-As always, [**email us**](mailto:yaledatascience@gmail.com) if you have questions!
+As always, **[email us](mailto:yaledatascience@gmail.com)** if you have questions!
 
 ### [Code](https://github.com/YaleDataScience/enroll)
 
@@ -24,15 +24,17 @@ For a given course, we're interested in the relationship between two data source
 ##### Text Reviews
 Peter Xu and Harry Yu of [CourseTable](http://coursetable.com) developed a [crawler](http://coursetable.com/UploadDataFile) to read data from OCS. It's simple to use (note: you must be a Yale student to do so). It pulls down data as a SQLite database. You can extract the course evaluation table as a comma-separated value file either from the [command line](http://stackoverflow.com/questions/5776660/export-from-sqlite-to-csv-using-shell-script) or using a tool like [SQLite Export](http://www.speqmath.com/tutorials/sqlite_export/).
 ##### Course Demand
-Yale has recently made an effort to up its data presentation game when it comes to Shopping Period. Most notably, they constantly update demand figures on [this site](https://ivy.yale.edu/course-stats/). We developed the Python script [**ocs_demand.py**](https://github.com/YaleDataScience/enroll/blob/master/py/ocs_demand.py) to extract the required data. It makes heavy use of the [BeautifulSoup package](http://www.crummy.com/software/BeautifulSoup/) to deconstruct HTML source code. On a Unix machine, use the following command to get what you want:
+Yale has recently made an effort to up its data presentation game when it comes to Shopping Period. Most notably, they constantly update demand figures on [this site](https://ivy.yale.edu/course-stats/). We developed the Python script **[ocs_demand.py](https://github.com/YaleDataScience/enroll/blob/master/py/ocs_demand.py)** to extract the required data. It makes heavy use of the [BeautifulSoup package](http://www.crummy.com/software/BeautifulSoup/) to deconstruct HTML source code. On a Unix machine, use the following command to get what you want:
+
 ```
 python ocs_demand.py | sort | uniq > ocs_demand.tsv
 ```
+
 (Note: there's some weird stuff going on with the course name field that we aren't sure how to fix. We can work around it pretty easily.)
 ##### Bringing It Together
 We will make the following assumption: people view all of the reviews for a course as a giant blob of text, and not individual tidbits. This seems reasonable to us, since people generally scroll through them quickly. This assumption also simplifies inference, so if you disagree with it and want to put in some extra work, that's great.
 
-So what we want now is a table with one row per course and the following columns: course identifier (a string), OCS demand (an integer), and the concatenated review text (a string). The Python program [**data_aggregate.py**](https://github.com/YaleDataScience/enroll/blob/master/py/data_aggregate.py) will handle this. As input, it takes two CSVs extracted from the CourseTable crawler - one with review data and one with course name data - and the TSV from the OCS demand script. Its design is as follows:
+So what we want now is a table with one row per course and the following columns: course identifier (a string), OCS demand (an integer), and the concatenated review text (a string). The Python program **[data_aggregate.py](https://github.com/YaleDataScience/enroll/blob/master/py/data_aggregate.py)** will handle this. As input, it takes two CSVs extracted from the CourseTable crawler - one with review data and one with course name data - and the TSV from the OCS demand script. Its design is as follows:
 
 1. Create a dictionary mapping course IDs to their concatenated review text. The review text is treated for natural language processing purposes via tokenizing, lowercasing, stopwording, and stemming. More on this later.
 2. Create a dictionary mapping full course names (e.g. STAT 365) to their course IDs (e.g. 17). Note that many different course names may be mapped to the same ID.
@@ -40,9 +42,11 @@ So what we want now is a table with one row per course and the following columns
 4. Combine the dictionaries from steps 1 and 3 to output the desired table.
 
 To run it on my machine, I used the following command:
+
 ```
 python data_aggregate.py ~/workspace/enroll/data/ocs_comments.csv ~/workspace/enroll/data/course_names.csv ~/workspace/enroll/data/ocs_demand.csv ~/workspace/enroll/data/enroll_data.csv --stop --wstem
 ```
+
 Again, we can't provide you with data. See if you can get this to work on your own.
 
 ### The Model
@@ -57,7 +61,7 @@ Perhaps the best known topic model is **latent Dirichlet allocation** - frequent
 - [An intuitive explanation by Edwin Chen](http://blog.echen.me/2011/08/22/introduction-to-latent-dirichlet-allocation/)
 - [A chapter from BRML](http://web4.cs.ucl.ac.uk/staff/D.Barber/textbook/131214.pdf)
 
-As with many unsupervised algorithms, LDA is frequently used as a form of feature engineering. That is, it takes in "raw" data and returns something more insightful. This prompted David Blei and John McAuliffe to develop [**supervised latent Dirichlet allocation**](https://www.cs.princeton.edu/~blei/papers/BleiMcAuliffe2007.pdf), or sLDA. By jointly modeling a response variable associated with each document, we can ensure that the topic distribution of a given document will correlate well with its response. Their example had to do with movie reviews and the star ratings associated with them. LDA might pull out topics relating to genre, but by jointly modeling the star ratings, sLDA will identify topics relating to film quality.
+As with many unsupervised algorithms, LDA is frequently used as a form of feature engineering. That is, it takes in "raw" data and returns something more insightful for input into a different model. This prompted David Blei and John McAuliffe to develop **[supervised latent Dirichlet allocation](https://www.cs.princeton.edu/~blei/papers/BleiMcAuliffe2007.pdf)**, or sLDA. By jointly modeling a response variable associated with each document, we can ensure that the topic distribution of a given document will correlate well with its response. Their example had to do with movie reviews and the star ratings associated with them. LDA might pull out topics relating to genre, but by jointly modeling the star ratings, sLDA will identify topics relating to film quality.
 
 ### Implementation
 Earlier, we mentioned that we somehow preprocessed the data for modeling. Here's the motivation. Suppose the words "recommend" and "Recommending" show up in two different documents. Shouldn't we treat them as the same object? What if the word "and" shows up? Do we even care about that? What about punctuation?
@@ -68,11 +72,11 @@ One last step of preprocessing: we're only going to consider courses whose deman
 
 ![Demand KDE](http://yaledatascience.github.io/public/post_images/demandkde.png)
 
-To do the modeling, we're going to work in R. The main script is [**enroll.R**](https://github.com/YaleDataScience/enroll/blob/master/enroll.R); note that you'll need to modify the file paths. The [*lda* package](http://cran.r-project.org/web/packages/lda/lda.pdf) implements sLDA quickly and is endorsed by David Blei. It also comes with tools for text processing, namely the *lexicalize* function.
+To do the modeling, we're going to work in R. The main script is **[enroll.R](https://github.com/YaleDataScience/enroll/blob/master/enroll.R)**; note that you'll need to modify the file paths. The [*lda* package](http://cran.r-project.org/web/packages/lda/lda.pdf) implements sLDA quickly and is endorsed by David Blei. It also comes with tools for text processing, namely the *lexicalize* function.
 
 LDA and sLDA are bag-of-word models, meaning we only care about a word's membership to a document, not its place within it. We can, however, recover some of the minute structure of the text by expanding our definition of a "word" from a unigram to an n-gram, or a sequence of n words found in the document. We'll be using unigrams, bigrams, and trigrams (as implied [here](http://dl.acm.org/citation.cfm?id=146685)).
 
-The *lexicalize* function only supports unigram dictionaries and document-term matrices, so we modified it in [**nlexicalize.R**](https://github.com/YaleDataScience/enroll/blob/master/nlexicalize.R). It requires RWeka and rjava, which are sometimes difficult to deal with; if those won't work for you, then just use the standard unigram implementation.
+The *lexicalize* function only supports unigram dictionaries and document-term matrices, so we modified it in **[nlexicalize.R](https://github.com/YaleDataScience/enroll/blob/master/nlexicalize.R)**. It requires RWeka and rjava, which are sometimes difficult to deal with; if those won't work for you, then just use the standard unigram implementation.
 
 Picking the right parameters for your topic model can seem like more art than science, particularly choosing the number of topics. In fact, that may be the case for any model with an informative prior. With LDA, we only have some approximate measures to do model comparison (e.g. perplexity). However, the supervised version has an obvious objective metric: response prediction performance. To identify the "best" model, we'll use a grid search. For every parameter set in the grid, we hold out a test set, learn an sLDA model on the training set, predict the response on the test set, and compute the RMSE. Using cross-validation or a tighter grid would give better results, but they'd also take wayyyyy too long. We're impatient.
 
@@ -87,7 +91,7 @@ We then train a final model using those values, and here's what we found.
 ### Results
 We present our results by analyzing each topic and assessing their effect on a course's OCS demand. The latter is straightforward: in the linear model, every topic has a coefficient which represents its effect on the response. Say topic X has a large coefficient. Then a course whose reviews are highly weight on topic X will be expected to have a large demand. Since sLDA is non-deterministic, these coefficients vary from trial to trial. However, we have found that in a 12 topic model, typically four topics strongly affect enrollment negatively and four topics strongly affect enrollment positively.
 
-If you read up on LDA, you'll recall that a topic is represented by a probability distribution over every term found in the collection of documents. A topic can be represented simply by the highest weighted terms in the distribution. [Word clouds](http://en.wikipedia.org/wiki/Tag_cloud) essentially capture the same information, but in a much more visually appealing way. The R package [*wordcloud*](http://cran.r-project.org/web/packages/wordcloud/wordcloud.pdf) is a simple way to generate world clouds directly from the results of LDA or sLDA. Due to the appearance of names of professors and courses in most of the word clouds, we will only include one example below. However, **enroll.R** generates all of them for your final model.
+If you read up on LDA, you'll recall that a topic is represented by a probability distribution over every term found in the collection of documents. A topic can be represented simply by the highest weighted terms in the distribution. [Word clouds](http://en.wikipedia.org/wiki/Tag_cloud) essentially capture the same information, but in a much more visually appealing way. The R package *[wordcloud](http://cran.r-project.org/web/packages/wordcloud/wordcloud.pdf)* is a simple way to generate world clouds directly from the results of LDA or sLDA. Due to the appearance of names of professors and courses in most of the word clouds, we will only include one example below. However, **enroll.R** generates all of them for your final model.
 
 Recall that LDA and sLDA are non-deterministic, and thus the topics change from trial to trial. However, the general content of the topics are generally stable. Most notably, the most positive topic is always the one represented by the word cloud below. No surprises here. (Note: the terms have not been unstemmed, so they might be missing an *s*, an *ing*, or an *e* at the end.)
 
@@ -129,4 +133,5 @@ If you want to go further, there's always more to be done. Here are some ideas.
 - Visualization: generate word clouds using unstemmed words
 
 See you at the next Yale Data Science meeting!
+
 ♥ YDS 
