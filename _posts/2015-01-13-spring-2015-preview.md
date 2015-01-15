@@ -116,7 +116,7 @@ low stress | highly recommend class
 would highly recommend | incredibly
 not much work | lecture disorganized
 provide good background | section
-aquired | always good
+acquired | always good
 hard to know | use in the future
 one paper | make or break
 grain of salt | need qr take
