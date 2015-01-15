@@ -104,12 +104,12 @@ Next, we present a list of terms given high weights in topics that strongly effe
 High scoring terms; positive topics | High scoring terms; negative topics
 :-----------------------------------|-----------------------------------:
 improve | required a lot
-grade get | midterm final reasonable
+grade | midterm final
 proud | if you're willing
 enjoyed lecture | great however
 take class probably | readings are long
 manageable workload | course interesting
-really a gut | clear and helpful
+gut | clear and helpful
 amazing class | really interesting subject
 aquired | blend
 low stress | highly recommend class
@@ -120,13 +120,13 @@ aquired | always good
 hard to know | use in the future
 one paper | make or break
 grain of salt | need qr take
-knowledge general | sense of accomplishment
+knowledge | sense of accomplishment
 
 Similar terms show up on both sides, which is likely due to the fact that they occured very frequently throughout the entire corpus of reviews. So take that with a "*grain of salt*". Also note that words like "*terrible*" aren't showing up. Recall that we only took courses with over 50 people signed up, implying that they're already popular.
 
 Ok so let's draw some conclusions. We'd expect to see many of these terms. Intuition tells us that people like courses which are high quality ("*amazing class*", "*enjoyed lecture*") and not-too-hard ("*manageable workload*", "*low stress*"). Similarly, people don't like low quality ("*lecture disorganized*") or overly difficult ("*required a lot*", "*readings are long*").
 
-For those who say there are no guts at Yale, you may want to check the data ("*really a gut*", "*not much work*"). Perhaps Yale guts aren't as gutty as other schools' guts. But a gut is a gut, any way you gut it.
+For those who say there are no guts at Yale, you may want to check the data ("*gut*", "*not much work*"). Perhaps Yale guts aren't as gutty as other schools' guts. But a gut is a gut, any way you gut it.
 
 There are also some surprises. It seems like even if people are adamant about how rewarding a class is ("*clear and helpful*", "*really interesting subject*", "*use in future*", "*sense of accomplishment*"), people won't take it. On the other hand, people seem to take some courses even if the reviewers are hesitant about it ("*hard to know*", "*grain of salt*").
 
