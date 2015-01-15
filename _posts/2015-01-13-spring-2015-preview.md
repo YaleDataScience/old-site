@@ -14,7 +14,7 @@ Ever taken a course that you REALLY REALLY want other people to take? Ever been 
 
 There has been a lot of [effort](http://haufler.org/2014/01/19/i-hope-i-dont-get-kicked-out-of-yale-for-this/) put into using numerical ratings to improve our understanding of Yale's courses. However, the review comments - which provide the richest information - have flown under the radar. For a course with high ratings, it's probably obvious that words like "good" and "recommend" will come up frequently. Similarly, for a course with a high workload, we'd expect to see terms like "hard" and "no sleep".
 
-But what do highly shopped courses look like? This is the most interesting question, since the actual action someone will take after looking at reviews is to add it to their OCS worksheet (or not). By the end of this post, you'll know what stuff to write to get people to sign up on OCS.
+But what do highly shopped courses look like? This is the most interesting question, since the actual action someone will take after looking at reviews is to add it to their OCS worksheet (or not). By the end of this post, you'll know what stuff to write to get people to sign up on OCS. If you aren't interested in the methods, just skip on down to the **[results](#result)**.
 
 ### Disclaimer
 Yale's course catalog has generated quite a bit of [data controversy](http://yaledailynews.com/blog/2014/01/22/ybb-closure-prompts-questions-about-data-rules/) over the year. We don't want to add to that. We won't display evaluations of individual courses or professors in ways that the University did not intend. If the names of any individuals or courses came up during the course of our analysis, they have been censored. We won't host any of Yale's data in our [Github repo](https://github.com/YaleDataScience/enroll) in accordance with University policy, but we can tell you how to get it yourselves. And we will. Right now.
@@ -88,7 +88,7 @@ Ah! That's confusing. Not really. Each color represents a different number of to
 
 We then train a final model using those values, and here's what we found.
 
-### Results
+### Results<a name="result"></a>
 Back to the original question: what can you write in a review to get people to sign up for a course on OCS? More specifically: **_what kind of language or topics separate a course attracting a decent crowd from one that attracts 400 people_**?
 
 We present our results by analyzing each topic and assessing their effect on a course's OCS demand. The latter is straightforward: in the linear model, every topic has a coefficient which represents its effect on the response. Say topic X has a large coefficient. Then a course whose reviews are highly weighted on topic X will be expected to have a large demand. Since sLDA is non-deterministic, these coefficients vary from trial to trial. However, we have found that in a 12 topic model, typically four topics strongly affect enrollment negatively and four topics strongly affect enrollment positively.
