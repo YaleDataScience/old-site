@@ -89,9 +89,9 @@ Ah! That's confusing. Not really. Each color represents a different number of to
 We then train a final model using those values, and here's what we found.
 
 ### Results
-Back to the original question: what can you write in a review to get people to sign up for a course on OCS. More specifically, **_what kind of language or topics separate a course attracting a decent crowd from one that attracts 400 people_**?
+Back to the original question: what can you write in a review to get people to sign up for a course on OCS? More specifically: **_what kind of language or topics separate a course attracting a decent crowd from one that attracts 400 people_**?
 
-We present our results by analyzing each topic and assessing their effect on a course's OCS demand. The latter is straightforward: in the linear model, every topic has a coefficient which represents its effect on the response. Say topic X has a large coefficient. Then a course whose reviews are highly weight on topic X will be expected to have a large demand. Since sLDA is non-deterministic, these coefficients vary from trial to trial. However, we have found that in a 12 topic model, typically four topics strongly affect enrollment negatively and four topics strongly affect enrollment positively.
+We present our results by analyzing each topic and assessing their effect on a course's OCS demand. The latter is straightforward: in the linear model, every topic has a coefficient which represents its effect on the response. Say topic X has a large coefficient. Then a course whose reviews are highly weighted on topic X will be expected to have a large demand. Since sLDA is non-deterministic, these coefficients vary from trial to trial. However, we have found that in a 12 topic model, typically four topics strongly affect enrollment negatively and four topics strongly affect enrollment positively.
 
 If you read up on LDA, you'll recall that a topic is represented by a probability distribution over every term found in the collection of documents. A topic can be represented simply by the highest weighted terms in the distribution. [Word clouds](http://en.wikipedia.org/wiki/Tag_cloud) essentially capture the same information, but in a much more visually appealing way. The R package *[wordcloud](http://cran.r-project.org/web/packages/wordcloud/wordcloud.pdf)* is a simple way to generate world clouds directly from the results of LDA or sLDA. Due to the appearance of names of professors and courses in most of the word clouds, we will only include one example below. However, **enroll.R** generates all of them for your final model.
 
@@ -124,7 +124,7 @@ knowledge | sense of accomplishment
 
 Similar terms show up on both sides, which is likely due to the fact that they occured very frequently throughout the entire corpus of reviews. So take that with a "*grain of salt*". Also note that words like "*terrible*" aren't showing up. Recall that we only took courses with over 50 people signed up, implying that they're already popular.
 
-Ok so let's draw some conclusions. We'd expect to see many of these terms. Intuition tells us that people like courses which are high quality ("*amazing class*", "*enjoyed lecture*") and not-too-hard ("*manageable workload*", "*low stress*"). Similarly, people don't like low quality ("*lecture disorganized*") or overly difficult ("*required a lot*", "*readings are long*").
+Ok so let's draw some conclusions. We'd expect to see many of these terms. Intuition tells us that people like courses which are high quality ("*amazing class*", "*enjoyed lecture*") and not-too-hard ("*manageable workload*", "*low stress*"). Similarly, people don't like low quality ("*lecture disorganized*") or overly difficult ("*required a lot*", "*readings are long*") courses.
 
 For those who say there are no guts at Yale, you may want to check the data ("*gut*", "*not much work*"). Perhaps Yale guts aren't as gutty as other schools' guts. But a gut is a gut, any way you gut it.
 
