@@ -1,5 +1,5 @@
 ---
-title: winter-info-session
+title: December 2015 Info Session
 layout: post
 date: 2015-12-09
 ---
@@ -17,5 +17,5 @@ next semester.
 
 Until then, good luck with your final exams!
 
-[<img src="http://www.google.com.au/images/nav_logo7.png">](https://www.facebook.com/events/524410961054701/)
+[<img src="goo.gl/3oN6OY">](https://www.facebook.com/events/524410961054701/)
 
