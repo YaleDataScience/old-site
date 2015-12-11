@@ -11,7 +11,7 @@ a new partnership with the upcoming Department of Statistics and Data Science, a
 future collaborations to look forward to.
 
 Until then, be sure to check out the new [Facebook page](https://facebook.com/YaleDataScience), as well as
-the [event page](https://www.facebook.com/events/524410961054701/), where you can fill out an attendance form so that we know who's interested and how much food to get! The winter info session will over some advising on
+the [event page](https://www.facebook.com/events/524410961054701/), where you can fill out an attendance form so that we know who's interested and how much food to get! The winter info session will go over some advising on
 what courses to enroll in next semester, as well as a brief preview to what the team has in store for everyone
 next semester.
 
